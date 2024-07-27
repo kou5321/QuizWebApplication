@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h2>Quiz Categories</h2>
+<div>
+    <ul>
+        <li th:each="category : ${categories}">
+            <a th:href="@{'/quiz?category=' + ${category.name}}"
+               th:text="${category.name}"></a>
+        </li>
+    </ul>
+</div>
+
+<h2>Recent Quiz Results</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Quiz Name</th>
+        <th>Date Taken</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="quiz : ${recentQuizzes}">
+        <td th:text="${quiz.name}"></td>
+        <td th:text="${quiz.timeEnd}"></td>
+        <td>
+            <a th:href="@{'/quiz/results/' + ${quiz.quizId}}">View Result</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

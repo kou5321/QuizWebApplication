@@ -32,4 +32,8 @@ public class QuizService {
     public void deleteById(Long id) {
         quizRepository.deleteById(id);
     }
+
+    public List<Quiz> findRecentQuizzesByEmail(String email) {
+        return quizRepository.findRecentQuizzesByEmail(email);
+    }
 }

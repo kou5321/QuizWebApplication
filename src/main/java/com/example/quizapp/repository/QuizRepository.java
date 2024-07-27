@@ -18,6 +18,14 @@ public class QuizRepository {
         return jdbcTemplate.query("SELECT * FROM quiz", new BeanPropertyRowMapper<>(Quiz.class));
     }
 
+    public List<Quiz> findRecentQuizzesByEmail(String email) {
+        String sql = "SELECT q.* FROM quiz q " +
+                "JOIN user u ON q.user_id = u.user_id " +
+                "WHERE u.email = ? " +
+                "ORDER BY q.time_end DESC";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Quiz.class), email);
+    }
+
     public Quiz findById(Long id) {
         return jdbcTemplate.queryForObject("SELECT * FROM quiz WHERE quiz_id = ?", new BeanPropertyRowMapper<>(Quiz.class), id);
     }

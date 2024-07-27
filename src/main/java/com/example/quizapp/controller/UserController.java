@@ -65,13 +65,12 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
-        return "user/register";
+        return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model) {
+    public String registerUser(@ModelAttribute("user") User user) {
         userService.save(user);
-        model.addAttribute("successMessage", "Registration successful! Please log in.");
         return "redirect:/login";
     }
 }
