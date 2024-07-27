@@ -24,12 +24,12 @@ public class QuizRepository {
 
     public int save(Quiz quiz) {
         return jdbcTemplate.update("INSERT INTO quiz (name, time_start, time_end, user_id, category_id) VALUES (?, ?, ?, ?, ?)",
-                quiz.getName(), quiz.getTimeStart(), quiz.getTimeEnd(), quiz.getUser().getUserId(), quiz.getCategory().getCategoryId());
+                quiz.getName(), quiz.getTimeStart(), quiz.getTimeEnd(), quiz.getUserId(), quiz.getCategoryId());
     }
 
     public int update(Quiz quiz) {
         return jdbcTemplate.update("UPDATE quiz SET name = ?, time_start = ?, time_end = ?, user_id = ?, category_id = ? WHERE quiz_id = ?",
-                quiz.getName(), quiz.getTimeStart(), quiz.getTimeEnd(), quiz.getUser().getUserId(), quiz.getCategory().getCategoryId(), quiz.getQuizId());
+                quiz.getName(), quiz.getTimeStart(), quiz.getTimeEnd(), quiz.getUserId(), quiz.getCategoryId(), quiz.getQuizId());
     }
 
     public int deleteById(Long id) {

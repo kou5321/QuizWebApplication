@@ -1,56 +1,41 @@
 package com.example.quizapp.entity;
 
-import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
-
-@Entity
 public class QuizQuestion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long qqId;
+    private Long quizId;
+    private Long questionId;
+    private Long userChoiceId;
 
-    @ManyToOne
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
-
-    @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
-
-    @ManyToOne
-    @JoinColumn(name = "user_choice_id")
-    private Choice userChoice;
-
+    // Getters and setters
     public Long getQqId() {
         return qqId;
-    }
-
-    public Quiz getQuiz() {
-        return quiz;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public Choice getUserChoice() {
-        return userChoice;
     }
 
     public void setQqId(Long qqId) {
         this.qqId = qqId;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
+    public Long getQuizId() {
+        return quizId;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuizId(Long quizId) {
+        this.quizId = quizId;
     }
 
-    public void setUserChoice(Choice userChoice) {
-        this.userChoice = userChoice;
+    public Long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
+    }
+
+    public Long getUserChoiceId() {
+        return userChoiceId;
+    }
+
+    public void setUserChoiceId(Long userChoiceId) {
+        this.userChoiceId = userChoiceId;
     }
 }
-

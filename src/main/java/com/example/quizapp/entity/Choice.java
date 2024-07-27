@@ -1,49 +1,41 @@
 package com.example.quizapp.entity;
 
-import jakarta.persistence.*;
-
-@Entity
 public class Choice {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long choiceId;
     private String description;
     private boolean isCorrect;
+    private Long questionId;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
-
+    // Getters and setters
     public Long getChoiceId() {
         return choiceId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isCorrect() {
-        return isCorrect;
-    }
-
-    public Question getQuestion() {
-        return question;
     }
 
     public void setChoiceId(Long choiceId) {
         this.choiceId = choiceId;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isCorrect() {
+        return isCorrect;
     }
 
     public void setCorrect(boolean correct) {
         isCorrect = correct;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public Long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
     }
 }
-

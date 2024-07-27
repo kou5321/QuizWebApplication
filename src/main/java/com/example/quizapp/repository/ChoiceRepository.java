@@ -24,12 +24,12 @@ public class ChoiceRepository {
 
     public int save(Choice choice) {
         return jdbcTemplate.update("INSERT INTO choice (description, is_correct, question_id) VALUES (?, ?, ?)",
-                choice.getDescription(), choice.isCorrect(), choice.getQuestion().getQuestionId());
+                choice.getDescription(), choice.isCorrect(), choice.getQuestionId());
     }
 
     public int update(Choice choice) {
         return jdbcTemplate.update("UPDATE choice SET description = ?, is_correct = ?, question_id = ? WHERE choice_id = ?",
-                choice.getDescription(), choice.isCorrect(), choice.getQuestion().getQuestionId(), choice.getChoiceId());
+                choice.getDescription(), choice.isCorrect(), choice.getQuestionId(), choice.getChoiceId());
     }
 
     public int deleteById(Long id) {
