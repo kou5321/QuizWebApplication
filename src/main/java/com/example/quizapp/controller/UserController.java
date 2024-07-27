@@ -61,4 +61,17 @@ public class UserController {
         userService.deleteById(id);
         return "redirect:/users";
     }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user/register";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user, Model model) {
+        userService.save(user);
+        model.addAttribute("successMessage", "Registration successful! Please log in.");
+        return "redirect:/login";
+    }
 }

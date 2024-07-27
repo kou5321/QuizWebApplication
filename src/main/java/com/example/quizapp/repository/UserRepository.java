@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
@@ -37,6 +38,10 @@ public class UserRepository {
     }
 
     public User findByEmail(String email) {
-        return jdbcTemplate.queryForObject("SELECT * FROM user WHERE email = ?", new BeanPropertyRowMapper<>(User.class), email);
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM user WHERE email = ?", new BeanPropertyRowMapper<>(User.class), email);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }

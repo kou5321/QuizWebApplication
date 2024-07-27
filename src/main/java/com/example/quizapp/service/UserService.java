@@ -22,6 +22,7 @@ public class UserService {
     }
 
     public void save(User user) {
+        // TODO: Add logic to check for existing user, hash passwords, etc.
         userRepository.save(user);
     }
 
@@ -37,4 +38,3 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 }
-
