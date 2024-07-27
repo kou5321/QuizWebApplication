@@ -1,7 +1,5 @@
 package com.example.quizapp.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import com.example.quizapp.entity.Category;
 import com.example.quizapp.entity.Quiz;
 import com.example.quizapp.service.CategoryService;
@@ -25,8 +23,8 @@ public class HomeController {
     private QuizService quizService;
 
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public String index() {
+        return "redirect:/home";
     }
 
     @GetMapping("/login")

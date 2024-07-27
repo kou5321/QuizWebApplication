@@ -27,9 +27,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/users/register", "/register").permitAll()
-                        .requestMatchers("/home", "/quiz/**").authenticated()
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers("/login", "/users/register", "/register").permitAll()
+                        .antMatchers("/home", "/quiz/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
@@ -39,7 +39,8 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .permitAll()
-                );
+                )
+                .csrf().disable(); // Consider enabling this in production
 
         return http.build();
     }
